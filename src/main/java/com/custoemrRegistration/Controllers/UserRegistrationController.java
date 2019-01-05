@@ -99,20 +99,6 @@ public class UserRegistrationController {
 		
 	}
 	
-	
-	/*@PostMapping("/appAction")
-	public ModelAndView approveApplication(@RequestBody UserBean userBean) {
-
-		if (logger.isDebugEnabled()) {
-			logger.debug(" User data: " + userBean);
-		}
-		System.out.println(" Database name: " + this.msg);
-		// new DatabaseConfiguration(msg);
-		userRegistrationService.updateApplication(userBean);
-		//		jdbc:h2:mem:testdb
-		return new ModelAndView("userRegistration");
-	}*/
-	
 	@RequestMapping("/updateStatus/{id}")
 	public String fetchKYCStatus (@PathVariable("id") int id) {
 		String status = userRegistrationService.updateKYCStatus(id);
