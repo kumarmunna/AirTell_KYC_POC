@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link href="css/main.css" rel="stylesheet">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	function getAllUser(){
+		var serviceURL = "http://localhost:8098/getUser";
+		$.get(serviceURL,
+				function(response) {
+					var data = response;
+					data.forEach(function(item) {
+						if(item.get()=="approved"
+							<input type="radio" name="appStatus" value="1" /> 1 <br />)
+							$("#SubmittedApp").append("<li> <input type=\"radio\" name=\"appStatus\" value=" + item + "</li>");
+						else
+						 $("#SubmittedApp").append("<li>" + item + "</li>");
+					}
+						  
+					
+				}).error(function() {
+					alert("Sorry could not proceed");
+				});
+	}
+</script>
+</head>
+<body onload="getAllUser()">
+<form action="/" id="ApproveForm">
+  <input type="text" name="s" placeholder="Search...">
+  <input type="submit" value="Search">
+</form>
+<div class ="SubmittedApp">
+</div>
+
+</body>
+</html>

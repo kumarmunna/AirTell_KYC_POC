@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>UserDetails</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+function setApprove(id){
+	//alert(id);
+	
+	var serviceURL="http://localhost:8098/updateStatus/"+id;
+	$.ajax({
+		  url: serviceURL,
+		  success: function (msg) {
+			  var data = msg;
+			  alert(data);
+		  },
+		  error: function (xhr, msg) {
+			  alert("Sorry could not proceed");
+		  }
+		});
+	
+}
+					function loadUser() {
+						
+							var serviceURL="http://localhost:8098/getUser";
+							$.ajax({
+								  url: serviceURL,
+								  success: function (msg) {
+									  var data = msg;
+									  var tr;
+									  data.forEach(function(Result) {
+										  tr = $('<tr/>');
+								            tr.append("<td>" + Result.firstname + "</td>");
+								            tr.append("<td>" + Result.lastname + "</td>");
+								            tr.append("<td>" + Result.kycstatus + "</td>");
+								            
+								            var button = document.createElement('input');
+								            button.setAttribute('type', 'button');
+								            button.setAttribute('value', 'Approve');
+								            button.setAttribute('onclick', 'setApprove("'+Result.id+'")');
+								            tr.append(button);
+								            $('table').append(tr);
+										});
+								  },
+								  error: function (xhr, msg) {
+									  alert("Sorry could not proceed");
+								  }
+								});
+						}
+					
+				</script>
+
+</head>
+<body onload="loadUser()">
+<h1> KYC User Details: </h1>
+<div class="container">
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>KYC Status</th>
+      	<th></th>
+    </tr>
+</table>
+</div>
+</body>
+</html>
