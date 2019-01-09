@@ -4,6 +4,9 @@ pipeline {
         stage('Building Stage') {
             steps {
                 echo "Running project build ... "
+                checkout scm
+                sh 'make'
+                stash includes: '**/target/*.jar', name: 'userregistration'
             }
         }
         stage('Testing Stage') {
