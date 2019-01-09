@@ -43,7 +43,7 @@
 				<input type="button" onclick="myFunction()" name=""
 					value="Check KYC Status" /><br />
 					<!-- <a href="http://localhost:8087/newPage" target="_blank"> KYC Approval</a><br /> -->
-					<a href="http://localhost:8084/kycapprove/newPage" target="_blank"> KYC Approval</a><br />
+					<a style="color: white;" href="http://localhost:8084/kycapprove/newPage" target="_blank"> KYC Approval</a><br />
 				<script>
 					function myFunction() {
 						var txt;
@@ -80,7 +80,7 @@
 					<div class="tab-pane fade show active" id="home" role="tabpanel"
 						aria-labelledby="home-tab">
 						<h3 class="register-heading">KYC Registration</h3>
-						<form action="#" th:action="@{/registration}"
+						<form action="#" th:action="@{/register/registration}"
 							th:object="${userbean}" method="post">
 							<div class="row register-form">
 								<div class="col-md-6">
@@ -94,7 +94,7 @@
 									</div>
 									<div class="form-group">
 									<label for="phone">Enter your aadhar number:</label>
-										<input type="number" th:field="*{aadharno}"
+										<input type="number"  minlength="10" maxlength="10" th:field="*{aadharno}"
 											class="form-control" placeholder="Aadhar No *" value="" />
 									</div>
 									<div class="form-group">

@@ -82,6 +82,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 			bean.setAddress(userRegistration.getAddress());
 			bean.setPhone(userRegistration.getPhone());
 			bean.setKycstatus(userRegistration.getKycstatus());
+			bean.setAadharno(userRegistration.getAadharno());
+			bean.setPanno(userRegistration.getPanno());
 			ubean.add(bean);
 		}
 		
